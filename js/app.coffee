@@ -14,4 +14,5 @@ document.todo = document.todo || {}
 todo = document.todo
 
 # initialize the application
-m.module(document, {controller: todo.controller, view: todo.view});
+element = document.getElementById("app-section")
+m.module(element, {controller: todo.controller, view: todo.view});
