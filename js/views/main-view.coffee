@@ -1,5 +1,5 @@
-document.todo = document.todo || {}
-todo = document.todo
+window.todo = window.todo || {}
+todo = window.todo
 
 todo.view = ->
   m '#app-section', [

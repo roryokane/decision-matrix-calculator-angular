@@ -1,5 +1,5 @@
-document.todo = document.todo || {}
-todo = document.todo
+window.todo = window.todo || {}
+todo = window.todo
 
 #the TodoList class is a list of Todo's
 todo.TodoList = Array

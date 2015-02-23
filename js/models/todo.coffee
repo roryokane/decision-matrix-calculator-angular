@@ -1,5 +1,5 @@
-document.todo = document.todo || {}
-todo = document.todo
+window.todo = window.todo || {}
+todo = window.todo
 
 #for simplicity, we use this module to namespace the model classes
 

@@ -1,5 +1,5 @@
-document.todo = document.todo || {}
-todo = document.todo
+window.todo = window.todo || {}
+todo = window.todo
 
 #the view-model tracks a running list of todos,
 #stores a description for new todos before they are created

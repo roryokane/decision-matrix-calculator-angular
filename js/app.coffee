@@ -10,8 +10,8 @@
 
 
 #this application only has one module: todo
-document.todo = document.todo || {}
-todo = document.todo
+window.todo = window.todo || {}
+todo = window.todo
 
 # initialize the application
 element = document.getElementById("app-section")
