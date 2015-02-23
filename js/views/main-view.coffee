@@ -4,7 +4,8 @@ todo = document.todo
 todo.view = ->
   m 'html', [
     m 'head', [
-      m 'link[rel=stylesheet]', href: 'style.css'
+      m 'link[rel=stylesheet]', href: 'style/normalize.css'
+      m 'link[rel=stylesheet]', href: 'style/style.css'
     ]
     m 'body', [
       m 'input',
