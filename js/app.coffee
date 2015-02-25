@@ -15,4 +15,5 @@ todo = window.todo
 
 # initialize the application
 element = document.getElementById("app-section")
-m.module(element, {controller: todo.controller, view: todo.view});
+#m.module(element, {controller: todo.controller, view: todo.view});
+m.module(element, {controller: dmc.controller, view: dmc.view});
