@@ -57,14 +57,8 @@ dmc.view = (ctrl) ->
         m 'input.add[type=button][value="Add"]'
       ]
     ]
+    m 'h2', "Attributes"
     m 'ul.attributes', [
-      dmc.vm.list.map (choice) ->
-        m 'li', [
-          m 'input[type=text]', value: attribute.name()
-          m 'input.delete[type=button][value="Delete"]'
-        ]
-      .concat m 'li', [
-        m 'input.add[type=button][value="Add"]'
-      ]
+      "TODO use the same list widget with a different data source"
     ]
   ]
