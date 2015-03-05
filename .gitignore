@@ -7,3 +7,6 @@ tmp
 
 # Broccoli build output when I am debugging it with `broccoli build dist`
 dist
+
+# private notes to myself about this project
+notes, personal
