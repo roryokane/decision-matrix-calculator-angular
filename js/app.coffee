@@ -13,6 +13,9 @@
 window.todo = window.todo || {}
 todo = window.todo
 
+# a test case to debug source maps with
+missingVar.noSuchField = "an error"
+
 # initialize the application
 element = document.getElementById("app-section")
 #m.module(element, {controller: todo.controller, view: todo.view});
