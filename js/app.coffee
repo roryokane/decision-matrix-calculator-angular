@@ -17,5 +17,7 @@ element = document.getElementById("app-section")
   #view: require('./todos/todos-view')
 #m.module(element, todoModuleParts);
 
-dmc = require('./dmc/everything-for-now')
-m.module(element, {controller: dmc.controller, view: dmc.view});
+dmcModuleParts =
+  controller: require('./dmc/dmc-controller')
+  view: require('./dmc/dmc-view')
+m.module(element, dmcModuleParts);
