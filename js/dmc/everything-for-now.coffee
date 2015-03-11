@@ -1,54 +1,50 @@
-window.dmc = window.dmc || {}
-dmc = window.dmc
-
-
 # models
-dmc.Choice = (data) ->
+exports.Choice = (data) ->
   @name = m.prop(data.name)
   return
 
-dmc.ChoiceList = Array
+exports.ChoiceList = Array
 
-dmc.Attribute = (data) ->
+exports.Attribute = (data) ->
   @name = m.prop(data.name)
   @relativeWeight = m.prop(data.relativeWeight)
   return
 
-dmc.AttributeList = Array
+exports.AttributeList = Array
 
-dmc.Matrix = (data) ->
+exports.Matrix = (data) ->
   # implement this later
   return
 
 
 # view-model
-dmc.vm = do ->
+exports.vm = do ->
   vm = {}
   
   vm.init = ->
-    vm.list = new dmc.ChoiceList
-    vm.list.push new dmc.Choice(name: "Left")
-    vm.list.push new dmc.Choice(name: "Right")
+    vm.list = new exports.ChoiceList
+    vm.list.push new exports.Choice(name: "Left")
+    vm.list.push new exports.Choice(name: "Right")
     
     vm.add = ->
-      vm.list.push new dmc.Choice(name = "")
+      vm.list.push new exports.Choice(name = "")
       return
     return
   
   return vm
 
 # controller
-dmc.controller = ->
-  dmc.vm.init()
+exports.controller = ->
+  exports.vm.init()
   return
 
 # view
-dmc.view = (ctrl) ->
+exports.view = (ctrl) ->
   m '#app-section', [
     m 'h1', "Decision Matrix Calculator"
     m 'h2', "Choices"
     m 'ul.choices', [
-      dmc.vm.list.map (choice) ->
+      exports.vm.list.map (choice) ->
         m 'li', [
           m 'input[type=text]', value: choice.name()
           m 'input.delete[type=button][value="Delete"]'

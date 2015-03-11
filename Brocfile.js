@@ -1,5 +1,5 @@
-var filterCoffeeScript = require('broccoli-coffee');
-var concat = require('broccoli-concat');
+var fastBrowserify = require('broccoli-fast-browserify');
+var coffeeify = require('coffeeify')
 var pickFiles = require('broccoli-static-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 
@@ -7,11 +7,19 @@ function wrapTreeContentsInDirectory(tree, directoryName) {
 	return pickFiles(tree, {srcDir: '/', destDir: directoryName});
 }
 
+
 var appJsTree = 'js';
-appJsTree = filterCoffeeScript(appJsTree);
-var appJsFile = concat(appJsTree, {
-	inputFiles: ['dmc/*', 'todos/*', 'app.*'],
-	outputFile: '/js/app-js.js',
+var appJsFile = fastBrowserify(appJsTree, {
+  bundles: {
+    "js/app-js.js": {
+      entryPoints: ['app.*'],
+      transform: coffeeify,
+    }
+  },
+	browserify: {
+		extensions: [".coffee"],
+		debug: true,
+	},
 });
 
 var vendoredJsTree = 'vendor';
