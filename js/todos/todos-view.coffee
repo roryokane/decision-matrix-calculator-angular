@@ -1,14 +1,13 @@
-window.todo = window.todo || {}
-todo = window.todo
+vm = require('./todo-view-model')
 
-todo.view = ->
+module.exports = ->
   m '#app-section', [
     m 'input',
-      onchange: m.withAttr('value', todo.vm.description)
-      value: todo.vm.description()
-    m 'button', onclick: todo.vm.add, "Add"
+      onchange: m.withAttr('value', vm.description)
+      value: vm.description()
+    m 'button', onclick: vm.add, "Add"
     m 'table', [
-      todo.vm.list.map (task, index) ->
+      vm.list.map (task, index) ->
         m 'tr', {className: "row"}, [
           m 'label', [
             m 'td', [
