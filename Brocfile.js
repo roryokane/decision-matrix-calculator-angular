@@ -27,8 +27,7 @@ var vendoredJsTree = 'vendor';
 vendoredJsTree = wrapTreeContentsInDirectory(vendoredJsTree, 'vendor-js');
 
 var stylesTree = 'style';
-stylesTree = compileSass([stylesTree], 'style.sass', 'style.css');
-stylesTree = wrapTreeContentsInDirectory(stylesTree, 'style');
+stylesTree = compileSass([stylesTree], 'style.sass', 'style/style.css');
 
 var publicFilesTree = 'public';
 
