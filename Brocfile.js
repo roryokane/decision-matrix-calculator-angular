@@ -1,6 +1,7 @@
+var pickFiles = require('broccoli-static-compiler');
 var fastBrowserify = require('broccoli-fast-browserify');
 var coffeeify = require('coffeeify')
-var pickFiles = require('broccoli-static-compiler');
+var compileSass = require('broccoli-sass');
 var mergeTrees = require('broccoli-merge-trees');
 
 function wrapTreeContentsInDirectory(tree, directoryName) {
@@ -26,6 +27,7 @@ var vendoredJsTree = 'vendor';
 vendoredJsTree = wrapTreeContentsInDirectory(vendoredJsTree, 'vendor-js');
 
 var stylesTree = 'style';
+stylesTree = compileSass([stylesTree], 'style.sass', 'style.css');
 stylesTree = wrapTreeContentsInDirectory(stylesTree, 'style');
 
 var publicFilesTree = 'public';

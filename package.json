@@ -13,6 +13,7 @@
     "broccoli": "^0.13.3",
     "broccoli-fast-browserify": "^0.2.5",
     "broccoli-merge-trees": "^0.2.1",
+    "broccoli-sass": "^0.6.0",
     "broccoli-static-compiler": "^0.2.1",
     "coffeeify": "^1.0.0"
   }
