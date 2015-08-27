@@ -1,5 +1,12 @@
 @import "normalize"
 
+@mixin hide-input-number-spinner
+  // one possible selector to use this in: input[type="number"]
+  -moz-appearance: textfield
+  &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+    -webkit-appearance: none
+    margin: 0
+
 *
   box-model: border-box
 
@@ -31,6 +38,7 @@ body
   input
     width: 1em
     text-align: center
+    @include hide-input-number-spinner
 
 .score
   background-color: #bfe5d6
