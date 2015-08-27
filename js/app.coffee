@@ -1,4 +1,4 @@
-app = angular.module('dmc', [])
+app = angular.module('decisionMatrixCalculator', [])
 
 defaultChoices = [{
   name: "Left"
