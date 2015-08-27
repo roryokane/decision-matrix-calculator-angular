@@ -1,16 +1,115 @@
 <!doctype html>
 <html>
-  <head>
-    <link rel="stylesheet" href="style/style.css">
-  </head>
-  <body>
-    <div id="app-section"></div>
+    <head>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <div id="app-section" ng-app="dmc">
+            
+            <h1>Decision Matrix Calculator</h1>
+            
+            <section class="choices">
+                <h2>Choices</h2>
+                <ul ng-controller="ChoicesController as choicesCtrl">
+                    <li ng-repeat="choice in choicesCtrl.choices">
+                        <input type="text" ng-model="choice.name" />
+                        <input type="button" value="Delete" ng-click="choicesCtrl.deleteChoice(choice)" />
+                    </li>
+                    <li>
+                        <input type="button" value="Add" ng-click="choicesCtrl.addChoice()" />
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="attributes" ng-controller="AttributesController as attributesCtrl">
+                <h2>Attributes</h2>
+                <ul>
+                    <li ng-repeat="attribute in attributesCtrl.attributes">
+                        <input type="text" ng-model="attribute.name" />
+                        <input type="button" value="Delete" />
+                    </li>
+                    <li>
+                        <input type="button" value="Add" />
+                    </li>
+                </ul>
+                
+                <section ng-controller="ShowHideController as showWeights">
+                    <h3>
+                        Attribute weights
+                        <span class="hide">(<a href="javascript:void(0)" ng-click="showWeights.toggle()">{{showWeights.showHideLabel()}}</a>)</span>
+                    </h3>
 
-    <noscript>
-      Decision Matrix Calculator requires JavaScript to work.
-    </noscript>
-    
-    <script src="vendor-js/mithril.min.js"></script>
-    <script src="js/app-js.js"></script>
-  </body>
+                    <table class="attribute-weights" ng-show="showWeights.show">
+                        <tr ng-repeat="attribute in attributesCtrl.attributes">
+                            <td>{{attribute.name}}</td>
+                            <td>
+                                <input type="range" class="slider" />
+                            </td>
+                            <td>
+                                <span class="percentage">50%</span>
+                            </td>
+                            <td>
+                                <input type="text" class="relative-weight" value="{{attribute.relativeWeight}}" />
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+
+            <section class="matrix">
+                <h2>Matrix</h2>
+                
+                <table>
+                    <tr>
+                        <th class="transpose">
+                            <input title="transpose (switch rows and columns)" type="button" value="⤢" />
+                        </th>
+                        <th>Pri…ce</th>
+                        <th>Qua…lity</th>
+                        <th class="score" title="Score (normalized)">
+                            Score</th>
+                    </tr>
+                    <tr>
+                        <th>Le…ft</th>
+                        <td>
+                            <input type="text" value="2" />
+                            <span class="outof"> / 5</span>
+                        </td>
+                        <td>
+                            <input type="text" value="4" />
+                            <span class="outof"> / 5</span>
+                        </td>
+                        <td class="score">1</td>
+                    </tr>
+                    <tr>
+                        <th>Ri…ght</th>
+                        <td>
+                            <input type="text" value="1" />
+                            <span class="outof"> / 5</span>
+                        </td>
+                        <td>
+                            <input type="text" value="4" />
+                            <span class="outof"> / 5</span>
+                        </td>
+                        <td class="score">0</td>
+                    </tr>
+                </table>
+            </section>
+
+            <p class="result">
+                <span class="label">The best choice:</span>
+                <span class="choice">Le…ft</span>
+            </p>
+
+            <button class="save-button">Save Matrix</button>
+            
+        </div>
+
+        <noscript>
+            Decision Matrix Calculator requires JavaScript to work.
+        </noscript>
+
+        <script src="vendor-js/angular.min.js"></script>
+        <script src="js/app-js.js"></script>
+    </body>
 </html>
