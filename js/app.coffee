@@ -10,7 +10,8 @@ app.controller 'ChoicesController', ->
   @choices = defaultChoices
   defaultNewChoice = {name: ""}
   @add = ->
-    @choices.push(defaultNewChoice)
+    newChoice = Object.create(defaultNewChoice)
+    @choices.push(newChoice)
     return
   @delete = (index) ->
     @choices.splice(index, 1)
@@ -29,7 +30,8 @@ app.controller 'AttributesController', ->
   @attributes = defaultAttributes
   defaultNewAttribute = {name: "", relativeWeight: 1}
   @add = ->
-    @attributes.push(defaultNewAttribute)
+    newAttribute = Object.create(defaultNewAttribute)
+    @attributes.push(newAttribute)
     return
   @delete = (index) ->
     @attributes.splice(index, 1)
