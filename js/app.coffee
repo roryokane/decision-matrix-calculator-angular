@@ -1,24 +1,43 @@
 app = angular.module('dmc', [])
 
+defaultChoices = [{
+  name: "Left"
+}, {
+  name: "Right"
+}]
+
 app.controller 'ChoicesController', ->
-  @choices = choices
-  @addChoice = ->
-    choices.push({name: ""})
+  @choices = defaultChoices
+  defaultNewChoice = {name: ""}
+  @add = ->
+    @choices.push(defaultNewChoice)
     return
-  @deleteChoice = (choice) ->
-    # somehow find that choice in choices
-    # without a linear search
-    foundIndex = 0 # TODO
-    choices.splice(foundIndex, 1)
+  @delete = (index) ->
+    @choices.splice(index, 1)
     return
   return
+
+defaultAttributes = [{
+  name: "Price"
+  relativeWeight: 1
+}, {
+  name: "Quality"
+  relativeWeight: 1
+}]
 
 app.controller 'AttributesController', ->
-  @attributes = attributes
+  @attributes = defaultAttributes
+  defaultNewAttribute = {name: "", relativeWeight: 1}
+  @add = ->
+    @attributes.push(defaultNewAttribute)
+    return
+  @delete = (index) ->
+    @attributes.splice(index, 1)
+    return
   return
 
-#app.controller 'EditableNamesController', ->
-#  return
+app.controller 'AttributeWeightsController', ->
+  return
 
 app.controller 'ShowHideController', ->
   @show = true
@@ -29,26 +48,10 @@ app.controller 'ShowHideController', ->
     return if @show then "hide" else "show"
   return
 
-app.controller 'AttributeWeightsController', ->
-  return
-
-choices = [{
-  name: "Left"
-}, {
-  name: "Right"
-}]
-
-attributes = [{
-  name: "Price"
-  relativeWeight: 1
-}, {
-  name: "Quality"
-  relativeWeight: 1
-}]
-
-choiceAttributeRatings = [
+defaultChoiceAttributeRatings = [
   [2, 4]
   [1, 4]
 ]
 
+# later, for organization, I can do this:
 #require('./ChoicesController')

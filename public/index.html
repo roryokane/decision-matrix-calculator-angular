@@ -13,10 +13,10 @@
                 <ul ng-controller="ChoicesController as choicesCtrl">
                     <li ng-repeat="choice in choicesCtrl.choices">
                         <input type="text" ng-model="choice.name" />
-                        <input type="button" value="Delete" ng-click="choicesCtrl.deleteChoice(choice)" />
+                        <input type="button" value="Delete" ng-click="choicesCtrl.delete($index)" />
                     </li>
                     <li>
-                        <input type="button" value="Add" ng-click="choicesCtrl.addChoice()" />
+                        <input type="button" value="Add" ng-click="choicesCtrl.add()" />
                     </li>
                 </ul>
             </section>
@@ -26,10 +26,10 @@
                 <ul>
                     <li ng-repeat="attribute in attributesCtrl.attributes">
                         <input type="text" ng-model="attribute.name" />
-                        <input type="button" value="Delete" />
+                        <input type="button" value="Delete" ng-click="attributesCtrl.delete($index)" />
                     </li>
                     <li>
-                        <input type="button" value="Add" />
+                        <input type="button" value="Add" ng-click="attributesCtrl.add()" />
                     </li>
                 </ul>
                 
