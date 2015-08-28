@@ -6,11 +6,6 @@ defaultChoices = [{
   name: "Right"
 }]
 
-app.controller 'ChoicesController', ->
-  @choices = defaultChoices
-  @defaultNewChoice = {name: ""}
-  return
-
 defaultAttributes = [{
   name: "Price"
   relativeWeight: 1
@@ -18,6 +13,11 @@ defaultAttributes = [{
   name: "Quality"
   relativeWeight: 1
 }]
+
+app.controller 'ChoicesController', ->
+  @choices = defaultChoices
+  @defaultNewChoice = {name: ""}
+  return
 
 app.controller 'AttributesController', ->
   @attributes = defaultAttributes
