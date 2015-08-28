@@ -1,10 +1,10 @@
-<section class="attribute-weights" ng-controller="ShowHideController as showWeights">
+<section class="attribute-weights" ng-controller="ShowHideController as showWeightsCtrl">
 
 	<h3>
 		Attribute weights
-		<span class="hide">(<a href="javascript:void(0)" ng-click="showWeights.toggle()">{{showWeights.showHideLabel()}}</a>)</span>
+		<span class="hide">(<a href="javascript:void(0)" ng-click="showWeightsCtrl.toggle()">{{showWeightsCtrl.showHideLabel()}}</a>)</span>
 	</h3>
 
-	<attribute-weights-editor ng-show="showWeights.show"></attribute-weights-editor>
+	<attribute-weights-editor ng-show="showWeightsCtrl.show"></attribute-weights-editor>
 	
 </section>
