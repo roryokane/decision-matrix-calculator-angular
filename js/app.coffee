@@ -60,6 +60,8 @@ app.directive 'attributeWeightsEditor', ->
         return attribute.relativeWeight / totalRelativeWeight * 100
       
       @sliderWeight = @percentageWeight
+      # Works because the default slider is from 0 to 100.
+      # I will increase the slider scale later, and have to change this.
       
       return
     controllerAs: 'weightsCtrl'
