@@ -8,14 +8,7 @@ defaultChoices = [{
 
 app.controller 'ChoicesController', ->
   @choices = defaultChoices
-  defaultNewChoice = {name: ""}
-  @add = ->
-    newChoice = Object.create(defaultNewChoice)
-    @choices.push(newChoice)
-    return
-  @delete = (index) ->
-    @choices.splice(index, 1)
-    return
+  @defaultNewChoice = {name: ""}
   return
 
 defaultAttributes = [{
@@ -28,15 +21,33 @@ defaultAttributes = [{
 
 app.controller 'AttributesController', ->
   @attributes = defaultAttributes
-  defaultNewAttribute = {name: "", relativeWeight: 1}
-  @add = ->
-    newAttribute = Object.create(defaultNewAttribute)
-    @attributes.push(newAttribute)
-    return
-  @delete = (index) ->
-    @attributes.splice(index, 1)
-    return
+  @defaultNewAttribute = {name: "", relativeWeight: 1}
   return
+
+app.directive 'editableNames', ->
+  return {
+    restrict: 'E'
+    templateUrl: 'editable-names.html'
+    scope: {
+      items: '=ngModel'
+      defaultNewItem: '='
+    }
+    link: (scope, iElement, iAttrs) ->
+      scope.add = ->
+        newItem = Object.create(scope.defaultNewItem)
+        scope.items.push(newItem)
+        return
+      scope.delete = (index) ->
+        scope.items.splice(index, 1)
+        return
+      return
+  }
+
+app.directive 'attributeWeights', ->
+  return {
+    restrict: 'E'
+    templateUrl: 'attribute-weights.html'
+  }
 
 app.controller 'AttributeWeightsController', ->
   return
