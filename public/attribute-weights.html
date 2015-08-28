@@ -1,22 +1,10 @@
 <section class="attribute-weights" ng-controller="ShowHideController as showWeights">
+
 	<h3>
 		Attribute weights
 		<span class="hide">(<a href="javascript:void(0)" ng-click="showWeights.toggle()">{{showWeights.showHideLabel()}}</a>)</span>
 	</h3>
 
-	<table ng-show="showWeights.show">
-		<tr ng-repeat="attribute in attributesCtrl.attributes">
-			<td>{{attribute.name}}</td>
-			<td>
-				<input type="range" class="slider" ng-model="weightsCtrl.sliderWeight(attribute, attributesCtrl.attributes)">
-			</td>
-			<td>
-				<span class="percentage">{{weightsCtrl.percentageWeight(attribute, attributesCtrl.attributes) | number : 0}}%</span>
-			</td>
-			<td>
-				<input type="number" class="relative-weight" min="0" ng-model="attribute.relativeWeight">
-			</td>
-		</tr>
-	</table>
+	<attribute-weights-editor ng-show="showWeights.show"></attribute-weights-editor>
 	
 </section>

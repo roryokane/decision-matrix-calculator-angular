@@ -47,6 +47,12 @@ app.directive 'attributeWeights', ->
   return {
     restrict: 'E'
     templateUrl: 'attribute-weights.html'
+  }
+
+app.directive 'attributeWeightsEditor', ->
+  return {
+    restrict: 'E'
+    templateUrl: 'attribute-weights-editor.html'
     controller: ->
       @percentageWeight = (attribute, allAttributes) ->
         _ = require('lodash')
@@ -54,11 +60,7 @@ app.directive 'attributeWeights', ->
         return attribute.relativeWeight / totalRelativeWeight * 100
       
       @sliderWeight = @percentageWeight
-        
-      updateAbsoluteWeights = ->
-        # look at relative weights of attributes,
-        # and adjust sliders
-        return
+      
       return
     controllerAs: 'weightsCtrl'
   }
