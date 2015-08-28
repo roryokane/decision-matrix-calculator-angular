@@ -9,6 +9,9 @@
   },
   "author": "Rory O’Kane",
   "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
   "devDependencies": {
     "broccoli": "^0.13.3",
     "broccoli-fast-browserify": "^0.2.5",

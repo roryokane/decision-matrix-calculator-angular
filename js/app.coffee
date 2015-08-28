@@ -43,18 +43,14 @@ app.directive 'editableNames', ->
       return
   }
 
-sumArray = require('./sumArray')
-
 app.directive 'attributeWeights', ->
   return {
     restrict: 'E'
     templateUrl: 'attribute-weights.html'
     controller: ->
       @percentageWeight = (attribute, allAttributes) ->
-        eachRelativeWeight = allAttributes
-          .map (attr) ->
-            attr.relativeWeight
-        totalRelativeWeight = sumArray(eachRelativeWeight, 0)
+        _ = require('lodash')
+        totalRelativeWeight = _(allAttributes).pluck('relativeWeight').sum()
         return attribute.relativeWeight / totalRelativeWeight * 100
       
       @sliderWeight = @percentageWeight
