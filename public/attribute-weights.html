@@ -14,7 +14,7 @@
 				<span class="percentage">{{weightsCtrl.percentageWeight(attribute, attributesCtrl.attributes) | number : 0}}%</span>
 			</td>
 			<td>
-				<input type="number" class="relative-weight" ng-model="attribute.relativeWeight">
+				<input type="number" class="relative-weight" min="0" ng-model="attribute.relativeWeight">
 			</td>
 		</tr>
 	</table>
