@@ -47,10 +47,14 @@ app.directive 'attributeWeights', ->
   return {
     restrict: 'E'
     templateUrl: 'attribute-weights.html'
+    controller: ->
+      updateAbsoluteWeights = ->
+        # look at relative weights of attributes,
+        # and adjust sliders
+        return
+      return
+    controllerAs: 'weightsCtrl'
   }
-
-app.controller 'AttributeWeightsController', ->
-  return
 
 app.controller 'ShowHideController', ->
   @show = true
