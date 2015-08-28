@@ -48,6 +48,19 @@ app.directive 'attributeWeights', ->
     restrict: 'E'
     templateUrl: 'attribute-weights.html'
     controller: ->
+      @percentageWeight = (attribute, allAttributes) ->
+        totalRelativeWeight = allAttributes
+          .map (attr) ->
+            attr.relativeWeight
+          .reduce(
+            (acc, current) ->
+              acc + current
+            , 0
+          )
+        return attribute.relativeWeight / totalRelativeWeight * 100
+      
+      @sliderWeight = @percentageWeight
+        
       updateAbsoluteWeights = ->
         # look at relative weights of attributes,
         # and adjust sliders

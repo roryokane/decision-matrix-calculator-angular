@@ -8,10 +8,10 @@
 		<tr ng-repeat="attribute in attributesCtrl.attributes">
 			<td>{{attribute.name}}</td>
 			<td>
-				<input type="range" class="slider">
+				<input type="range" class="slider" ng-model="weightsCtrl.sliderWeight(attribute, attributesCtrl.attributes)">
 			</td>
 			<td>
-				<span class="percentage">50%</span>
+				<span class="percentage">{{weightsCtrl.percentageWeight(attribute, attributesCtrl.attributes) | number : 0}}%</span>
 			</td>
 			<td>
 				<input type="number" class="relative-weight" ng-model="attribute.relativeWeight">
