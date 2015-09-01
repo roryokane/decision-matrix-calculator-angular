@@ -1,3 +1,4 @@
+angular = require('angular')
 app = angular.module('decisionMatrixCalculator', ['dmcAttributeWeights'])
 do require('./attribute-weights')
 
