@@ -2,6 +2,8 @@
 
 A web app to help people make decisions, written in Angular.js.
 
+![Screenshot of the app](screenshots/screenshot_of_page_scaled_down.png)
+
 I am writing this because I want to enable people to use decision matrices easily, without having to set up a spreadsheet or open a separate app like Excel. Writing this also helps me learn the client-side JavaScript framework I am writing it in – Angular in this case.
 
 ## Status
