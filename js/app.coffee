@@ -1,6 +1,8 @@
 angular = require('angular')
-app = angular.module('decisionMatrixCalculator', ['dmcAttributeWeights'])
-do require('./attribute-weights')
+app = angular.module('decisionMatrixCalculator', ['dmcAttributeWeights', 'editableNames'])
+do require('./attribute-weights-section')
+do require('./editable-names')
+WeightedAttribute = require('./weighted-attribute')
 
 defaultChoices = [{
   name: "Left"
@@ -8,42 +10,22 @@ defaultChoices = [{
   name: "Right"
 }]
 
-defaultAttributes = [{
-  name: "Price"
-  relativeWeight: 1
-}, {
-  name: "Quality"
-  relativeWeight: 1
-}]
+defaultAttributes = [
+  new WeightedAttribute {name: "Price"}
+  new WeightedAttribute {name: "Quality"}
+]
 
 app.controller 'ChoicesController', ->
   @choices = defaultChoices
-  @defaultNewChoice = {name: ""}
+  @newChoiceFactory = ->
+    Object.create({name: ""})
   return
 
 app.controller 'AttributesController', ->
   @attributes = defaultAttributes
-  @defaultNewAttribute = {name: "", relativeWeight: 1}
+  @newAttributeFactory = ->
+    new WeightedAttribute({name: ""})
   return
-
-app.directive 'editableNames', ->
-  return {
-    restrict: 'E'
-    templateUrl: 'editable-names.html'
-    scope: {
-      items: '=ngModel'
-      defaultNewItem: '='
-    }
-    link: (scope, iElement, iAttrs) ->
-      scope.add = ->
-        newItem = Object.create(scope.defaultNewItem)
-        scope.items.push(newItem)
-        return
-      scope.delete = (index) ->
-        scope.items.splice(index, 1)
-        return
-      return
-  }
 
 app.controller 'ShowHideController', ->
   @show = true
