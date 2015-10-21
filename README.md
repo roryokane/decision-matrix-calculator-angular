@@ -17,4 +17,6 @@ My next step is learning which features of Angular I can use to most naturally i
 ## How to run it
 
 * Run `npm install` to install modules
-* Run `broccoli serve` to start a server that automatically compiles files
+* Run `broccoli serve` (or `npm start`) to start a server that automatically compiles files
+
+I can run `npm run-script deploy` to deploy this to my GitHub `gh-pages` branch.
