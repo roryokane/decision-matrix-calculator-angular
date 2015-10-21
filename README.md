@@ -14,6 +14,8 @@ Still in development. You can edit the list of choices and attributes, and edit 
 
 My next step is learning which features of Angular I can use to most naturally implement editing of the same data in a different part of the page, when one of the views edits the data abstractly instead of directly. I will need this to allow editing relative weights by dragging the percentage sliders, not just by editing the text field.
 
+You can [view the current version](https://roryokane.github.io/decision-matrix-calculator-angular/) on GitHub Pages.
+
 ## How to run it
 
 * Run `npm install` to install modules
