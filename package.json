@@ -5,8 +5,7 @@
   "description": "A decision matrix calculator web app.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "broccoli serve",
-    "deploy": "broccoli build dist && ./deploy.sh && rm -rf dist/"
+    "start": "broccoli serve"
   },
   "author": "Rory O’Kane",
   "license": "ISC",

@@ -19,6 +19,6 @@ You can [view the current version](https://roryokane.github.io/decision-matrix-c
 ## How to run it
 
 * Run `npm install` to install modules
-* Run `broccoli serve` (or `npm start`) to start a server that automatically compiles files
+* Run `make serve` to start a server that automatically compiles files
 
-I can run `npm run-script deploy` to deploy this to my GitHub `gh-pages` branch.
+I can run `make deploy` to deploy this to my GitHub `gh-pages` branch.
