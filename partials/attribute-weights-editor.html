@@ -3,12 +3,17 @@
 		<td ng-if="attribute.name">{{attribute.name}}</td>
 		<td ng-if="!attribute.name">?</td>
 		<td>
-		<attribute-weight-slider granularity="1000" ng-model="attribute.absoluteWeightProperty(attributesCtrl.attributes)" ng-model-options="{getterSetter: true}"></attribute-weight-slider>
+			<attribute-weight-slider
+				granularity="1000"
+				ng-model="attribute.absoluteWeightProperty(attributesCtrl.attributes)"
+				ng-model-options="{getterSetter: true}"
+				ng-change="attributesCtrl.normalizeWeights()"></attribute-weight-slider>
 		</td>
 		<td>
 			<span class="percentage">{{weightsCtrl.percentageWeight(attribute, attributesCtrl.attributes) | number : 0}}%</span>
 		</td>
 		<td>
+			<!-- TODO keep this relativeWeight display rounded to 2 decimals, or 1 or 0 decimals for 2- and 3-digit numbers -->
 			<input type="number" class="relative-weight" min="0" ng-model="attribute.relativeWeight">
 		</td>
 	</tr>
