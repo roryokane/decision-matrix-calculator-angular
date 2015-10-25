@@ -17,22 +17,6 @@ module.exports = ->
         @percentageWeight = (attribute, allAttributes) ->
           return attribute.getAbsoluteWeight(allAttributes) * 100
         
-        #@sliderWeight = (attribute, allAttributes) ->
-        #  return fractionalWeight(attribute, allAttributes) * 100
-        # Works because the default slider is from 0 to 100.
-        # I will increase the slider scale later, and have to change this.
-        
-        # I have to pass in required values in a constructor somehow
-        # No, using defineProperty won’t work after all.
-        # It won’t support accepting the specific attribute as an argument.
-        # And I can’t define separate properties for every attribute.
-        # Will I have to go with $watch after all?
-        #Object.defineProperty @prototype, 'sliderWeight',
-        #  get: ->
-        #    return fractionalWeight(attribute, allAttributes) * 100
-        #  set: (newVal) ->
-        #    # set attribute.relativeWeight
-        
         return
       controllerAs: 'weightsCtrl'
     }
