@@ -50,26 +50,13 @@ module.exports = ->
         
         $inputElement.prop('step', 1 / scope.granularity)
         
-        fromAbsoluteWeight = (absoluteWeight) ->
-          console.log "slider converting fromAbsoluteWeight", absoluteWeight
-          return absoluteWeight
-        ngModelCtrl.$formatters.push(fromAbsoluteWeight)
-        
-        toAbsoluteWeight = (sliderValue) ->
-          console.log "slider converting toAbsoluteWeight from", sliderValue
-          return sliderValue
-        ngModelCtrl.$parsers.push(toAbsoluteWeight)
-        
         $inputElement.on 'input', (event) ->
           newValue = $inputElement.prop('value')
           ngModelCtrl.$setViewValue(newValue)
-          console.log("updating slider view from changed input value", newValue)
           return
         
         ngModelCtrl.$render = ->
-          console.log("rendering slider with $viewValue", ngModelCtrl.$viewValue)
           $inputElement.prop('value', ngModelCtrl.$viewValue)
-          console.log("rendered slider", $inputElement, "so its value is", $inputElement.prop('value'))
           return
         
         return
