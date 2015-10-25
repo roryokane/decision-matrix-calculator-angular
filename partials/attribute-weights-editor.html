@@ -1,8 +1,8 @@
 <table>
 	<tr ng-repeat="attribute in attributesCtrl.attributes">
-		<td>{{attribute.name}}</td>
+		<td ng-if="attribute.name">{{attribute.name}}</td>
+		<td ng-if="!attribute.name">?</td>
 		<td>
-		<!--<input type="range" class="slider" min="0" max="1" step="0.1" ng-model="attribute.absoluteWeightProperty(attributesCtrl.attributes)" ng-model-options="{getterSetter: true}"></input>-->
 		<attribute-weight-slider granularity="1000" ng-model="attribute.absoluteWeightProperty(attributesCtrl.attributes)" ng-model-options="{getterSetter: true}"></attribute-weight-slider>
 		</td>
 		<td>
