@@ -35,9 +35,8 @@ module.exports = ->
         $inputElement.prop('step', 1 / scope.granularity)
         
         $inputElement.on 'input', (event) ->
-          scope.$apply ->
-            newValue = $inputElement.prop('value')
-            ngModelCtrl.$setViewValue(newValue)
+          newValue = $inputElement.prop('value')
+          ngModelCtrl.$setViewValue(newValue)
           return
         
         ngModelCtrl.$render = ->
