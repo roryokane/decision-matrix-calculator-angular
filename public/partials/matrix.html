@@ -1,39 +1,29 @@
-<h2>Matrix</h2>
-
-<p style="font-style: italic;">The below is a static mockup and has not been implemented yet.</p>
-
-<table>
-	<tr>
-		<th class="transpose">
-			<input title="transpose (switch rows and columns)" type="button" value="⤢">
-		</th>
-		<th>Price</th>
-		<th>Quality</th>
-		<th class="score" title="Score (normalized)">
-			Score</th>
-	</tr>
-	<tr>
-		<th>Left</th>
-		<td>
-			<input type="number" value="2">
-			<span class="outof"> / 5</span>
-		</td>
-		<td>
-			<input type="number" value="4">
-			<span class="outof"> / 5</span>
-		</td>
-		<td class="score">1</td>
-	</tr>
-	<tr>
-		<th>Right</th>
-		<td>
-			<input type="number" value="1">
-			<span class="outof"> / 5</span>
-		</td>
-		<td>
-			<input type="number" value="4">
-			<span class="outof"> / 5</span>
-		</td>
-		<td class="score">0</td>
-	</tr>
-</table>
+<section class="matrix">
+	<h2>Matrix</h2>
+	
+	<p style="font-style: italic;">The below is in development and cannot input ratings yet.</p>
+	
+	<table>
+		<tr>
+			<th class="transpose">
+				<input title="transpose (switch rows and columns)" type="button" value="⤢">
+			</th>
+			<th ng-repeat="attribute in attributes">
+				<span ng-if="attribute.name">{{attribute.name}}</span>
+				<span ng-if="!attribute.name">?</span>
+			</th>
+			<th class="score" title="Score (normalized)">Score</th>
+		</tr>
+		<tr ng-repeat="choice in choices">
+			<th>
+				<span ng-if="choice.name">{{choice.name}}</span>
+				<span ng-if="!choice.name">?</span>
+			</th>
+			<td ng-repeat="attribute in attributes">
+				<input type="number" ng-model="ratings[0][0]">
+				<span class="outof"> / 5</span>
+			</td>
+			<td class="score">1</td>
+		</tr>
+	</table>
+</section>

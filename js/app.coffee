@@ -1,7 +1,8 @@
 angular = require('angular')
 _ = require('lodash')
-app = angular.module('decisionMatrixCalculator', ['dmcAttributeWeights', 'editableNames'])
+app = angular.module('decisionMatrixCalculator', ['dmcAttributeWeights', 'dmcMatrix', 'editableNames'])
 do require('./attribute-weights-section')
+do require('./matrix')
 do require('./editable-names')
 WeightedAttribute = require('./weighted-attribute')
 
@@ -17,9 +18,21 @@ defaultAttributes = [
   new WeightedAttribute {name: "Quality"}
 ]
 
+defaultChoiceAttributeRatings = [
+  [2, 4]
+  [1, 4]
+]
 
-app.controller 'ChoicesController', ->
-  @choices = defaultChoices
+
+app.controller 'DMCController', ($scope) ->
+  @choices                = defaultChoices
+  @attributes             = defaultAttributes
+  @choiceAttributeRatings = defaultChoiceAttributeRatings
+  return
+
+
+app.controller 'ChoicesController', ($scope) ->
+  @choices = $scope.dmcCtrl.choices
   
   @newChoiceFactory = ->
     Object.create({name: ""})
@@ -27,8 +40,8 @@ app.controller 'ChoicesController', ->
   return
 
 
-app.controller 'AttributesController', ->
-  @attributes = defaultAttributes
+app.controller 'AttributesController', ($scope) ->
+  @attributes = $scope.dmcCtrl.attributes
   
   @newAttributeFactory = ->
     new WeightedAttribute({name: ""})
@@ -59,11 +72,6 @@ app.controller 'ShowHideController', ->
     return if @show then "hide" else "show"
   return
 
-
-defaultChoiceAttributeRatings = [
-  [2, 4]
-  [1, 4]
-]
 
 # later, for organization, I can do this:
 #require('./ChoicesController')
