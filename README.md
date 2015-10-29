@@ -14,7 +14,7 @@ Still in development. You can edit the list of choices and attributes, and edit 
 
 You can [view the current version](https://roryokane.github.io/decision-matrix-calculator-angular/) on GitHub Pages.
 
-My next step is making the matrix of ratings be drawn dynamically, responding to changes in the lists of choices and attributes.
+My next step is making the matrix of ratings support entering unique ratings for each combination of choice and attribute.
 
 ## How to run it
 
