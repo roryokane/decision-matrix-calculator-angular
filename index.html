@@ -5,23 +5,26 @@
         <title>Decision Matrix Calculator</title>
     </head>
     <body>
-        <div id="app-section" ng-app="decisionMatrixCalculator">
+        <div id="app-section" ng-app="decisionMatrixCalculator" ng-controller="DMCController as dmcCtrl">
             
             <h1>Decision Matrix Calculator</h1>
             
             <section class="choices" ng-controller="ChoicesController as choicesCtrl">
                 <h2>Choices</h2>
-                <editable-names ng-model="choicesCtrl.choices" new-item-factory="choicesCtrl.newChoiceFactory"></editable-names>
+                <editable-names ng-model="dmcCtrl.choices" new-item-factory="choicesCtrl.newChoiceFactory"></editable-names>
             </section>
             
             <section class="attributes" ng-controller="AttributesController as attributesCtrl">
                 <h2>Attributes</h2>
-                <editable-names ng-model="attributesCtrl.attributes" new-item-factory="attributesCtrl.newAttributeFactory"></editable-names>
+                <editable-names ng-model="dmcCtrl.attributes" new-item-factory="attributesCtrl.newAttributeFactory"></editable-names>
                 
                 <attribute-weights></attribute-weights>
             </section>
             
-            <section class="matrix" ng-include="'partials/matrix.html'"></section>
+            <choice-attribute-matrix
+                choices="dmcCtrl.choices"
+                attributes="dmcCtrl.attributes"
+                ratings="dmcCtrl.choiceAttributeRatings"></choice-attribute-matrix>
             
             <p class="result">
                 <span class="label">The best choice:</span>
