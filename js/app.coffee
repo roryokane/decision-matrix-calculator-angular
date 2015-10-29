@@ -47,13 +47,11 @@ app.controller 'AttributesController', ($scope) ->
     new WeightedAttribute({name: ""})
   
   @normalizeWeights = ->
-    weights = _.pluck(@attributes, 'relativeWeight')
-    
-    if _.all(weights, (weight) -> weight > 1)
-      divideAllWeightsBy(_.min(weights))
-    else if _.all(weights, (weight) -> weight < 1)
-      divideAllWeightsBy(_.max(weights))
-    
+    threshholdForNormalization = 10
+    while _.all(@attributes, (attribute) -> attribute.relativeWeight > threshholdForNormalization)
+      divideAllWeightsBy(threshholdForNormalization)
+    while _.all(@attributes, (attribute) -> attribute.relativeWeight < 1/threshholdForNormalization && attribute.relativeWeight > 0)
+      divideAllWeightsBy(1/threshholdForNormalization)
     return
   
   divideAllWeightsBy = (factor) =>
